@@ -1,0 +1,77 @@
+.headerBG{width:100%; background:#fff;}
+.headerWarpper{width:1280px; margin:0 auto; overflow: hidden; height:auto;}
+.topLinks{width:100%; display:block;}
+.pull-left{float:left;}
+.pull-right{float:right}
+.logoSec{display: inline;}
+.appname { color: #39393b;  font-family: 'CiscoSansTTExtraLight'; font-size: 23px;line-height: 27px;	margin: 25px 0 0;display: inline-block;}
+.utilityLinks ul {float: right; margin-top: 22px; top:0;}
+.utilityLinks li {background: none; color:#049fd9; display: inline-block; font-size: 14px; line-height: 12px; padding: 0 5px; vertical-align: middle;}
+.utilityLinks li a { background: none !important;color: #58585b;outline: 0;}
+.utilityLinks li a:hover {text-decoration: underline;color: #009fd6;}
+.notificationIcon{
+	margin-right: 15px;
+}
+.pos-rel{ position:relative;margin-top: 6px;}
+.alertBell{background:url(../../assets/notification.png)7px 11px no-repeat; padding:21px;}
+.questionSpan {
+    font-size: 31px;
+    border: none;
+    color:#00BCEA;
+}
+
+.questionMark {
+    display: inline-block !important;
+    margin-bottom: 50px;
+}
+
+.questionMark-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 130px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin: 0px 0px 0px -120px;
+}
+
+.questionMark-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.questionMark-content a:hover {background-color: #ddd}
+
+.questionMark:hover .questionMark-content {
+    display: block;
+}
+
+
+.questionSpan {
+    font-size: 31px;
+    border: none;
+    color:#00BCEA;
+}
+
+
+a.ciscologo {background: url("../../assets/logoCisco.png") no-repeat scroll center center;
+	display: inline-block;
+    height: 33px;
+    margin: 17px 10px 0px 0px;
+    text-indent: -9999px;
+    width: 62px;
+    vertical-align: top;}
+
+    .spacer {
+        flex: 1 1 auto;
+        float: right;
+      }
+    
+      .tablinks{
+        margin-top: 65px;
+      }
+      .tablinks li a{
+        background: none !important;color: #58585b; font-size: 0.7em; 
+      }

@@ -1,1 +1,68 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,700');
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+@import url('//fonts.googleapis.com/icon?family=Material+Icons');
+
+@include mat-core();
+
+$primary: mat-palette($mat-indigo, 500);
+$accent:  mat-palette($mat-pink, 500, A200, A400);
+$warn:    mat-palette($mat-red, 500);
+
+$config: mat-typography-config();
+
+$theme: mat-light-theme($primary, $accent, $warn);
+
+@include angular-material-theme($theme);
+
+body {
+  background:#E5E5E5;
+  font-family: mat-font-family($config);
+  font-weight: normal;
+  margin: 0;
+  color:#fff;
+}
+
+.risk-search div.mat-form-field-wrapper{
+    position: relative;
+    float: right;
+}
+
+.risk-search input.mat-input-element{
+    color:black;
+}
+
+.risk-dropdowns select.mat-input-element{
+    color:black;
+}
+
+
+.bg-dropdown div.mat-form-field-wrapper{
+    margin: 50px 0px 0px 40px;
+}
+
+.port-dropdown div.mat-form-field-wrapper{
+    margin: 50px 0px 0px 100px;
+}
+
+.prod-dropdown div.mat-form-field-wrapper{
+    margin: 50px 0px 0px 100px;
+}
+
+
+ul {
+    list-style-type:none;
+    margin:0 0 2em 0;
+    padding:0;
+}
+ul li {
+    display:inline;
+    margin-right: 30px;
+}
+ul li a {
+    font-size: 1.5em;
+}
+a {
+    color:#fff;
+    text-decoration:none;
+}

@@ -1,0 +1,50 @@
+/* Structure */
+.container {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+  }
+  
+  /* Toolbar */
+  .spacer {
+    flex: 1 1 auto;
+    float: right;
+  }
+  
+  /* Filter */
+  .form {
+    min-height: 56px;
+    max-height: 56px;
+    display: flex;
+    align-items: center;
+    padding: 8px 24px 0;
+    font-size: 20px;
+    justify-content: space-between;
+    border-bottom: 1px solid transparent;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    flex-grow: 1;
+    margin-top: 8px;
+  }
+  
+  /* Mat table */
+  .no-results {
+    display: flex;
+    justify-content: center;
+    padding: 14px;
+    font-size: 14px;
+    font-style: italic;
+  }
+  
+  
+  
+  .mainWrapper{ margin: 64px 100px 100px 100px;}
+
+  .dropdownTitle{color:#fff !important; font-size:14px; margin: 7px 10px;}
+  .topBGBU{margin-top:7px; position:relative;width:26%;}
+  .pull-right{float:right}
+  .risk-dropdowns{
+    display: inherit;
+  }
