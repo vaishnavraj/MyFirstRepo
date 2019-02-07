@@ -78,3 +78,7 @@
   box-shadow: 0 0 0 0 transparent;
   color: #fff;
 }
+
+::ng-deep .bgDropDown select.mat-input-element{
+  background-color: #212121;
+}
