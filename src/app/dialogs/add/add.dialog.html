@@ -1,11 +1,11 @@
 <div class="container">
-  <h3 mat-dialog-title>Add new Issue</h3>
+  <h3 mat-dialog-title>Add new Product</h3>
 
   <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput #input class="form-control" placeholder="Id" [(ngModel)]="data.id" name="id" required >
+        <input matInput #input class="form-control" placeholder="Product Name" [(ngModel)]="data.productName" name="productName" required >
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
@@ -13,7 +13,7 @@
     <!--Textarea for demo purposes-->
     <div class="form">
       <mat-form-field color="accent">
-        <textarea matInput #input class="form-control" placeholder="Title" [(ngModel)]="data.title" name="title" required ></textarea>
+        <textarea matInput #input class="form-control" placeholder="Asset Types" [(ngModel)]="data.assetTypes" name="assetTypes" required ></textarea>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
@@ -21,7 +21,7 @@
     <!--Contains mat-hint for characters count and has maxLengt set-->
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput #inputstate class="form-control" placeholder="State" [(ngModel)]="data.state" name="state" maxlength="10" required >
+        <input matInput #inputstate class="form-control" placeholder="Repository" [(ngModel)]="data.repository" name="repository" maxlength="10" required >
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
         <mat-hint align="end">{{inputstate.value?.length || 0}}/10</mat-hint>
       </mat-form-field>
@@ -29,21 +29,45 @@
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput placeholder="Url" [(ngModel)]="data.url" name="url">
+        <input matInput placeholder="Location" [(ngModel)]="data.userAssetLocation" name="userAssetLocation">
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput placeholder="Created at" [(ngModel)]="data.created_at" name="created_at">
+        <input matInput placeholder="Data Owner" [(ngModel)]="data.dataOwner" name="dataOwner">
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput placeholder="Updated at" [(ngModel)]="data.updated_at" name="updated_at">
+        <input matInput placeholder="Data Custodian" [(ngModel)]="data.dataCustodian" name="dataCustodian">
       </mat-form-field>
     </div>
+
+    <div class="form">
+        <mat-form-field color="accent">
+          <input matInput placeholder="Vulnerability Gap" [(ngModel)]="data.vulnerabilityGap" name="vulnerabilityGap">
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+          <mat-form-field color="accent">
+            <input matInput placeholder="Status" [(ngModel)]="data.secureStatus" name="secureStatus">
+          </mat-form-field>
+        </div>
+
+        <div class="form">
+            <mat-form-field color="accent">
+              <input matInput placeholder="Last Secured On" [(ngModel)]="data.lastSecuredOnDate" name="lastSecuredOnDate">
+            </mat-form-field>
+          </div>
+
+          <div class="form">
+              <mat-form-field color="accent">
+                <input matInput placeholder="Action" [(ngModel)]="data.action" name="action">
+              </mat-form-field>
+            </div>
 
     <div mat-dialog-actions>
       <button mat-button [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="confirmAdd()">Save</button>

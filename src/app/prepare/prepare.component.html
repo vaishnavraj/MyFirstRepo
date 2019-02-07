@@ -1,0 +1,100 @@
+<div class="mainWrapper">
+<div class="container mat-elevation-z8">
+    <div class="risk-dropdowns" layout="row" flex>
+    
+        <div class="port-dropdown"> 
+         <mat-form-field>
+             <select placeholder="Portfolio" matNativeControl required>
+               <option value="Portfolio 1">Portfolio 1</option>
+               <option value="Portfolio 2">Portfolio 2</option>
+               <option value="Portfolio 3">Portfolio 3</option>
+               <option value="Portfolio 4">Portfolio 4</option>
+             </select>
+          </mat-form-field>
+        </div>
+        <div class="prod-dropdown"> 
+           <mat-form-field>
+               <select placeholder="Product" matNativeControl required>
+                 <option value="Product 1">Product 1</option>
+                 <option value="Product 2">Product 2</option>
+                 <option value="Product 3">Product 3</option>
+                 <option value="Product 4">Product 4</option>
+               </select>
+             </mat-form-field>
+         </div>
+
+   </div>
+    <button mat-button class="viewRiskButton" (click)="sendMeRAHome()">View Risk Assessment</button>
+    <div class="form risk-search">
+      <mat-form-field floatPlaceholder="never" color="accent">
+        <input matInput #filter placeholder="Filter locations">
+      </mat-form-field>
+    </div>
+  
+    <mat-paginator #paginator
+    [length]="dataSource.filteredData.length"
+    [pageIndex]="0"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons>
+    </mat-paginator>
+   
+    <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+  
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+  
+      <!-- ID Column -->
+      <ng-container matColumnDef="assetTypes">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Asset Type</mat-header-cell>
+        <mat-cell *matCellDef="let row" >{{row.assetTypes}}</mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="notApplicable">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Not Applicable</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.notApplicable}}</mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="repository">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Repository</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.repository}}</mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="userAssetLocation">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Location</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.userAssetLocation}}</mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="dataOwner">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Data Owner</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.dataOwner}}</mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="dataCustodian">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Data Custodian</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.dataCustodian}}</mat-cell>
+      </ng-container>
+
+      <!-- actions -->
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>
+          <button mat-icon-button color="primary">
+            <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+          </button>
+        </mat-header-cell>
+  
+        <mat-cell *matCellDef="let row; let i=index;">
+          <button mat-icon-button color="accent" >
+            <mat-icon aria-label="Edit">edit</mat-icon>
+          </button>
+  
+          <button mat-icon-button color="accent" >
+            <mat-icon aria-label="Delete">delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+   
+  </div>
+</div>

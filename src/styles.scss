@@ -5,7 +5,7 @@
 
 @include mat-core();
 
-$primary: mat-palette($mat-indigo, 500);
+$primary: mat-palette($mat-grey, 900);
 $accent:  mat-palette($mat-pink, 500, A200, A400);
 $warn:    mat-palette($mat-red, 500);
 
@@ -36,11 +36,6 @@ body {
     color:black;
 }
 
-
-.bg-dropdown div.mat-form-field-wrapper{
-    margin: 50px 0px 0px 40px;
-}
-
 .port-dropdown div.mat-form-field-wrapper{
     margin: 50px 0px 0px 100px;
 }
@@ -48,7 +43,6 @@ body {
 .prod-dropdown div.mat-form-field-wrapper{
     margin: 50px 0px 0px 100px;
 }
-
 
 ul {
     list-style-type:none;
@@ -66,3 +60,8 @@ a {
     color:#fff;
     text-decoration:none;
 }
+
+
+.bgDropDown{
+   margin-right: 100px;
+ }

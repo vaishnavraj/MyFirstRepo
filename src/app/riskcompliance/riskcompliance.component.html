@@ -1,0 +1,33 @@
+<mat-toolbar color="primary">
+    <div class="riskTitleClass">Risk Assessment Compliance</div>
+    <span class="fill-remaining-space"></span>
+    <div class="bgDropDown">
+        <label>Business Group  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <mat-form-field>
+            <select placeholder="" matNativeControl required>
+                <option *ngFor="let bgname of bgnames" [value]="bgname.buName">
+                    {{bgname.buName}}
+                </option>
+            </select>
+        </mat-form-field>
+    </div>
+</mat-toolbar>
+
+
+  <div class="steppersbg">
+      <mat-horizontal-stepper labelPosition="bottom" #stepper>
+          <mat-step  [stepControl]="firstFormGroup">
+              <ng-template matStepLabel>Prepare</ng-template>
+              <app-prepare></app-prepare>
+          </mat-step>
+          <mat-step>
+              <ng-template matStepLabel>Assess</ng-template>
+              <app-assess></app-assess>
+          </mat-step>
+          <mat-step>
+              <ng-template matStepLabel>Secure</ng-template>
+              <app-secure></app-secure>
+          </mat-step>
+    </mat-horizontal-stepper>
+  </div>
+    

@@ -3,15 +3,16 @@ import {BehaviorSubject} from 'rxjs';
 import {RiskDisplay} from './models/riskdisplay';
 import {BGBean} from './models/bgbean';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import { RiskPrepareDisplay } from './models/riskpreparedisplay';
 
 @Injectable()
 export class DataService {
-  private readonly API_URL = 'https://wwwin-iap-dev.cisco.com/IAP/v1/getRiskAssessmentDataForProduct?buName=Raju+Sharma+BG1&portfolioName=Raj&productName=Alpha Beta Test 2';
-  private readonly API_URL_BG='https://wwwin-iap-dev.cisco.com/IAP/v1/getRoleAndBU?userId=rajusha&pmo=true&showAll=false';
+  private readonly API_URL = 'https://wwwin-iap-stage.cisco.com/IAP/v1/getRiskAssessmentDataForProduct?buName=%21P+%26+G+%7E%21%40%23%24%25%5E%26*%28%29_%2B%7B%7D%7C%3A%22%3C%3E%3F%60-%3D%5B%5D%5C%3B%27%2C.%2F&portfolioName=!P%20%26%20G%20~!%40%23%24%25%5E%26*()_%2B%7B%7D%7C%3A%22%3C%3E%3F%60-%3D%5B%5D%5C%3B%27%2C.%2F_1&productName=!P%20%26%20G%20~!%40%23%24%25%5E%26*()_%2B%7B%7D%7C%3A%22%3C%3E%3F%60-%3D%5B%5D%5C%3B%27%2C.%2F1';
+  private readonly API_URL_BG='https://wwwin-iap-stage.cisco.com/IAP/v1/getRoleAndBU?userId=rajusha&pmo=true&showAll=false';
+  private readonly API_URL_PREPARE_PAGE='https://wwwin-iap-stage.cisco.com/IAP/v1/dataDisplayForRisk?buName=%21P+%26+G+%7E%21%40%23%24%25%5E%26*%28%29_%2B%7B%7D%7C%3A%22%3C%3E%3F%60-%3D%5B%5D%5C%3B%27%2C.%2F&portfolioName=!P%20%26%20G%20~!%40%23%24%25%5E%26*()_%2B%7B%7D%7C%3A%22%3C%3E%3F%60-%3D%5B%5D%5C%3B%27%2C.%2F_1&productName=!P%20%26%20G%20~!%40%23%24%25%5E%26*()_%2B%7B%7D%7C%3A%22%3C%3E%3F%60-%3D%5B%5D%5C%3B%27%2C.%2F1';
 
 
   dataChange: BehaviorSubject<RiskDisplay[]> = new BehaviorSubject<RiskDisplay[]>([]);
-  bgChange: BehaviorSubject<BGBean[]> = new BehaviorSubject<BGBean[]>([]);
   // Temporarily stores data from dialogs
   dialogData: any;
 
@@ -21,9 +22,6 @@ export class DataService {
     return this.dataChange.value;
   }
 
-  get bgdata(): BGBean[] {
-    return this.bgChange.value;
-  }
 
   getDialogData() {
     return this.dialogData;
@@ -45,6 +43,11 @@ export class DataService {
   public getAllBGNames() {
     console.log(" getAllBGNames got called");
     return this.httpClient.get<BGBean[]>(this.API_URL_BG);
+  }
+
+  public getAllPreparePageData(){
+    console.log(" getAllPreparePageData got called");
+    return this.httpClient.get<RiskPrepareDisplay[]>(this.API_URL_PREPARE_PAGE);
   }
 
 

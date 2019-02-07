@@ -10,6 +10,8 @@ import {DeleteDialogComponent} from '../dialogs/delete/delete.dialog.component';
 import {BehaviorSubject, fromEvent, merge, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import { BGBean } from '../models/bgbean';
+import {ActivatedRoute} from '@angular/router';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -18,7 +20,6 @@ import { BGBean } from '../models/bgbean';
   styleUrls: ['./riskassessmenthome.component.scss']
 })
 export class RiskassessmenthomeComponent implements OnInit {
-
   displayedColumns = ['productName', 'assetTypes', 'repository', 'userAssetLocation', 
   'dataOwner', 'dataCustodian','vulnerabilityGap','secureStatus','lastSecuredOnDate','action', 'actions'];
   exampleDatabase: DataService | null;
@@ -30,7 +31,7 @@ export class RiskassessmenthomeComponent implements OnInit {
 
   constructor(public httpClient: HttpClient,
               public dialog: MatDialog,
-              public dataService: DataService) {}
+              public dataService: DataService,private route:ActivatedRoute, private router:Router) {}
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -44,70 +45,74 @@ export class RiskassessmenthomeComponent implements OnInit {
     });
   }
 
+  sendMeRiskAssessment(){
+    this.router.navigate(['riskcompliance']);
+  }
+
   refresh() {
     this.loadData();
   }
 
   addNew(riskDisplay: RiskDisplay) {
-    alert("Add Not Enabled");
-    //const dialogRef = this.dialog.open(AddDialogComponent, {
-    //  data: {riskDisplay: riskDisplay }
-    //});
+   // alert("Add Not Enabled");
+    const dialogRef = this.dialog.open(AddDialogComponent, {
+      data: {riskDisplay: riskDisplay }
+    });
 
-    //dialogRef.afterClosed().subscribe(result => {
-      //if (result === 1) {
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 1) {
         // After dialog is closed we're doing frontend updates
         // For add we're just pushing a new row inside DataService
-        //this.exampleDatabase.dataChange.value.push(this.dataService.getDialogData());
-        //this.refreshTable();
-     // }
-    //});
+        this.exampleDatabase.dataChange.value.push(this.dataService.getDialogData());
+        this.refreshTable();
+      }
+    });
   }
 
   startEdit(i: number, productName: string, assetTypes: string, repository: string, userAssetLocation: string, 
     dataOwner: string, dataCustodian: string, vulnerabilityGap: string, secureStatus: string, lastSecuredOnDate: string, action: string) {
     
-    alert("Edit Not Enabled");
-    //this.productName = productName;
+    //alert("Edit Not Enabled");
+    this.productName = productName;
     // index row is used just for debugging proposes and can be removed
-    //this.index = i;
-    //console.log(this.index);
-    //const dialogRef = this.dialog.open(EditDialogComponent, {
-      //data: {productName: productName, assetTypes: assetTypes, repository: repository, userAssetLocation: userAssetLocation, 
-       // dataOwner: dataOwner, dataCustodian: dataCustodian, vulnerabilityGap: vulnerabilityGap, secureStatus: secureStatus, lastSecuredOnDate: lastSecuredOnDate
-       // , action: action}
-    //});
+    this.index = i;
+    console.log(this.index);
+    const dialogRef = this.dialog.open(EditDialogComponent, {
+      data: {productName: productName, assetTypes: assetTypes, repository: repository, userAssetLocation: userAssetLocation, 
+        dataOwner: dataOwner, dataCustodian: dataCustodian, vulnerabilityGap: vulnerabilityGap, secureStatus: secureStatus, lastSecuredOnDate: lastSecuredOnDate
+        , action: action}
+    });
 
-    //dialogRef.afterClosed().subscribe(result => {
-      //if (result === 1) {
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 1) {
         // When using an edit things are little different, firstly we find record inside DataService by id
         //const foundIndex = this.exampleDatabase.dataChange.value.findIndex(x => x.productName === this.productName);
-        //const foundIndex =1;
+        const foundIndex =1;
         // Then you update that record using data from dialogData (values you enetered)
-        //this.exampleDatabase.dataChange.value[foundIndex] = this.dataService.getDialogData();
+        this.exampleDatabase.dataChange.value[foundIndex] = this.dataService.getDialogData();
         // And lastly refresh table
-        //this.refreshTable();
-     // }
-    //});
+        this.refreshTable();
+      }
+    });
   }
 
   deleteItem(i: number, productName: string, assetTypes: string, repository: string, userAssetLocation: string) {
-    alert("Delete Not Enabled");
-    //this.index = i;
-    //this.productName = productName;
-    //const dialogRef = this.dialog.open(DeleteDialogComponent, {
-     // data: {productName: productName, assetTypes: assetTypes, repository: repository, userAssetLocation: userAssetLocation}
-    //});
+    //alert("Delete Not Enabled");
+    this.index = i;
+    this.productName = productName;
+    const dialogRef = this.dialog.open(DeleteDialogComponent, {
+      data: {productName: productName, assetTypes: assetTypes, repository: repository, userAssetLocation: userAssetLocation}
+    });
 
-    //dialogRef.afterClosed().subscribe(result => {
-      //if (result === 1) {
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 1) {
         //const foundIndex = this.exampleDatabase.dataChange.value.findIndex(x => x.productName === this.productName);
-        //const foundIndex =1;
+        const foundIndex =1;
         // for delete we use splice in order to remove single object from DataService
-        //this.exampleDatabase.dataChange.value.splice(foundIndex, 1);
-        //this.refreshTable();
-     // }
-    //});
+        this.exampleDatabase.dataChange.value.splice(foundIndex, 1);
+        this.refreshTable();
+      }
+    });
   }
 
 

@@ -40,7 +40,7 @@
   
   
   
-  .mainWrapper{ margin: 64px 100px 100px 100px;}
+  .mainWrapper{ margin: 10px 100px 100px 100px;}
 
   .dropdownTitle{color:#fff !important; font-size:14px; margin: 7px 10px;}
   .topBGBU{margin-top:7px; position:relative;width:26%;}
@@ -48,3 +48,33 @@
   .risk-dropdowns{
     display: inherit;
   }
+  
+  .fill-remaining-space {
+    flex: 7.5 1 auto;
+ }
+ 
+
+.viewRiskButton{
+  border-width: 0;
+  padding: 6px 12px;
+  border-radius: 30px;
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  box-shadow: 0 0 0 1px #049fd9 inset;
+  color: #049fd9;
+  font-size: 0.875rem;
+  height: 30px;
+  line-height: 0.875rem;
+  min-width: 100px;
+  transition: box-shadow 0.1s linear 0s;
+  vertical-align: middle;
+  float: right;
+  margin: auto;
+  margin-right: 50px;
+  margin-top: -50px;
+}
+
+.viewRiskButton :hover{
+  background-color: #049fd9;
+  box-shadow: 0 0 0 0 transparent;
+  color: #fff;
+}
